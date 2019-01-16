@@ -1,0 +1,46 @@
+{
+  "name": "react-kode",
+  "version": "0.0.1",
+  "description": "React Component of code block in HTML with highlight.js ",
+  "main": "dist/react-kode.min.js",
+  "scripts": {
+    "build": "rollup -c -o dist/react-kode.min.js",
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "keywords": [
+    "react",
+    "kode",
+    "component",
+    "highlight",
+    "syntax",
+    "code",
+    "block",
+    "html"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andyyou/react-kode.git"
+  },
+  "homepage": "https://github.com/andyyou/react-kode#readme",
+  "author": "andyyou",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/plugin-proposal-class-properties": "^7.2.3",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/addon-actions": "^4.1.6",
+    "@storybook/addon-knobs": "^4.1.6",
+    "@storybook/addons": "^4.1.6",
+    "@storybook/react": "^4.1.6",
+    "babel-loader": "^8.0.5",
+    "highlight.js": "^9.13.1",
+    "react": "^16.7.0",
+    "rollup": "^1.1.0",
+    "rollup-plugin-babel": "^4.3.0",
+    "rollup-plugin-uglify": "^6.0.1"
+  },
+  "dependencies": {
+    "react-dom": "^16.7.0"
+  }
+}
