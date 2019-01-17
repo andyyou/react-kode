@@ -42,5 +42,5 @@ export const enableLineNumber = (htmlString) => {
       <td>${ln}</td>
     </tr>`;
   }).join('');
-  return `<table>${innerHTML}</table>`;
+  return `<table class="hljs-table">${innerHTML}</table>`;
 }

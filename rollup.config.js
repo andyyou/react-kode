@@ -8,6 +8,7 @@ const config = {
     name: 'react-kode',
     globals: {
       react: 'React',
+      'highlight.js': 'hljs',
     },
   },
   plugins: [

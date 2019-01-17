@@ -1,26 +1,6 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
 import { highlight, enableLineNumber } from './utils';
 import 'highlight.js/styles/solarized-dark.css';
-
-const Container = styled.div`
-  ${({ isEnableLineNumber }) => isEnableLineNumber && `
-    table {
-      border-collapse: collapse;
-      td:nth-child(2) {
-        width: 100%;
-      }
-    }
-    .hljs-ln {
-      &:hover {
-        background-color: black;
-      }
-    }
-    .hljs-num {
-      user-select: none;
-    }
-  `}
-`;
 
 class Kode extends Component {
   constructor(props) {
@@ -43,17 +23,21 @@ class Kode extends Component {
     const {
       lang,
       isEnableLineNumber,
+      className,
     } = this.props;
-
+    const props = {
+      isEnableLineNumber,
+      className,
+    };
     return (
-      <Container isEnableLineNumber={isEnableLineNumber}>
+      <div {...props}>
         <pre>
           <code
             className={`hljs ${lang}`}
             ref={this.el}
           />
         </pre>
-      </Container>
+      </div>
     );
   }
 }
