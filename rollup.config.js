@@ -18,7 +18,6 @@ const config = {
   ],
   external: [
     'react',
-    'highlight.js',
   ],
 };
 export default config;

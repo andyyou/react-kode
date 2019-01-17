@@ -1,10 +1,11 @@
 {
   "name": "react-kode",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "React Component of code block in HTML with highlight.js ",
   "main": "dist/react-kode.min.js",
   "scripts": {
     "build": "rollup -c -o dist/react-kode.min.js",
+    "prepublish": "npm run build",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
   "keywords": [
