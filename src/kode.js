@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import { highlight, enableLineNumber } from './utils';
-import 'highlight.js/styles/solarized-dark.css';
+import {
+  highlight,
+  enableLineNumber,
+  initialize,
+} from './utils';
 
 class Kode extends Component {
   constructor(props) {
     super(props);
 
     this.el = React.createRef();
+    initialize();
   }
 
   componentDidMount() {
@@ -15,6 +19,8 @@ class Kode extends Component {
       lang,
       isEnableLineNumber,
     } = this.props;
+
+
     const snippet = highlight(children, lang || 'plaintext').value;
     this.el.current.innerHTML = isEnableLineNumber ? enableLineNumber(snippet) : snippet;
   }
@@ -22,11 +28,9 @@ class Kode extends Component {
   render() {
     const {
       lang,
-      isEnableLineNumber,
       className,
     } = this.props;
     const props = {
-      isEnableLineNumber,
       className,
     };
     return (

@@ -44,3 +44,22 @@ export const enableLineNumber = (htmlString) => {
   }).join('');
   return `<table class="hljs-table">${innerHTML}</table>`;
 }
+
+/**
+ * Add inline css
+ */
+export const initialize = () => {
+  const style = document.createElement('style');
+  const css = `
+    .hljs-table td:nth-child(2) {
+      width: 100%;
+    }
+    .hljs-num {
+      user-select: none;
+      -moz-user-select: none;
+    }
+  `;
+  style.type = 'text/css';
+  style.appendChild(document.createTextNode(css));
+  document.head.appendChild(style);
+}
