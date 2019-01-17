@@ -1,40 +1,59 @@
 import React, { Component } from 'react';
-import hljs from 'highlight.js/lib';
+import styled from 'styled-components';
+import { highlight, enableLineNumber } from './utils';
 import 'highlight.js/styles/solarized-dark.css';
-import { HtmlEncode } from './utils';
+
+const Container = styled.div`
+  ${({ isEnableLineNumber }) => isEnableLineNumber && `
+    table {
+      border-collapse: collapse;
+      td:nth-child(2) {
+        width: 100%;
+      }
+    }
+    .hljs-ln {
+      &:hover {
+        background-color: black;
+      }
+    }
+    .hljs-num {
+      user-select: none;
+    }
+  `}
+`;
+
 class Kode extends Component {
   constructor(props) {
     super(props);
+
     this.el = React.createRef();
   }
 
   componentDidMount() {
-    const blocks = Array.from(this.el.current.querySelectorAll('pre code'));
-    blocks.forEach((block) => {
-      hljs.highlightBlock(block);
-    });
+    const {
+      children,
+      lang,
+      isEnableLineNumber,
+    } = this.props;
+    const snippet = highlight(children, lang || 'plaintext').value;
+    this.el.current.innerHTML = isEnableLineNumber ? enableLineNumber(snippet) : snippet;
   }
 
   render() {
     const {
       lang,
-      children,
+      isEnableLineNumber,
     } = this.props;
-    let snippet = children;
-    if (lang === 'html') {
-      snippet = (
-        <div dangerouslySetInnerHTML={{__html: HtmlEncode(snippet)}} />
-      );
-    }
 
     return (
-      <div ref={this.el}>
+      <Container isEnableLineNumber={isEnableLineNumber}>
         <pre>
-          <code className={lang}>
-            {snippet}
-          </code>
+          <code
+            className={`hljs ${lang}`}
+            ref={this.el}
+          />
         </pre>
-      </div>
+      </Container>
     );
   }
 }

@@ -39,6 +39,14 @@ storiesOf('Kode', module)
       {html}
     </Kode>
   ))
+  .add('HTML support line number', () => (
+    <Kode
+      lang="html"
+      isEnableLineNumber={true}
+    >
+      {html}
+    </Kode>
+  ))
   .add('JavaScript', () => (
     <Kode lang="javascript">
       {js}
