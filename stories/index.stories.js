@@ -1,7 +1,20 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
+import styled from 'styled-components';
+
+import 'highlight.js/styles/solarized-dark.css';
 import Kode from '../src/kode';
+
+const Title = styled.h4`
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+`;
+const Card = styled.div`
+  border: 1px solid #ddd;
+  padding: 8px;
+  width: 600px;
+  border-radius: 3px;
+`
 
 /**
  * Sample codes.
@@ -35,17 +48,36 @@ ReactDOM.render(
 storiesOf('Kode', module)
   .addDecorator(withKnobs)
   .add('HTML', () => (
-    <Kode lang="html">
-      {html}
-    </Kode>
-  ))
-  .add('HTML support line number', () => (
-    <Kode
-      lang="html"
-      isEnableLineNumber={true}
-    >
-      {html}
-    </Kode>
+    <div>
+      <Title>Defualt</Title>
+      <Card>
+        <Kode lang="html">
+          {html}
+        </Kode>
+      </Card>
+
+      <Title>Line number</Title>
+      <Card>
+        <Kode
+          lang="html"
+          isEnableLineNumber={true}
+        >
+          {html}
+        </Kode>
+      </Card>
+
+      <Title>Setup initial line number</Title>
+      <Card>
+        <Kode
+          lang="html"
+          isEnableLineNumber={true}
+          initialLineNumber={5}
+        >
+          {html}
+        </Kode>
+      </Card>
+
+    </div>
   ))
   .add('JavaScript', () => (
     <Kode lang="javascript">

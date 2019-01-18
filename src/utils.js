@@ -34,11 +34,11 @@ export const highlight = (str, lang) => {
  * The string generate by highlight.js
  * @param {string} htmlString
  */
-export const enableLineNumber = (htmlString) => {
+export const enableLineNumber = (htmlString, initialLineNumber) => {
   const lines = htmlString.split('\n');
   const innerHTML = lines.map((ln, i) => {
     return `<tr class="hljs-ln">
-      <td><span class="hljs-num">${i + 1} </span></td>
+      <td><span class="hljs-num">${initialLineNumber + i} </span></td>
       <td>${ln}</td>
     </tr>`;
   }).join('');
@@ -48,9 +48,15 @@ export const enableLineNumber = (htmlString) => {
 /**
  * Add inline css
  */
-export const initialize = () => {
+export const embedInlineCSS = () => {
   const style = document.createElement('style');
   const css = `
+    .hljs-pre {
+      margin: 0;
+    }
+    .hljs-table {
+      border-collapse: collapse;
+    }
     .hljs-table td:nth-child(2) {
       width: 100%;
     }

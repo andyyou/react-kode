@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   highlight,
   enableLineNumber,
-  initialize,
+  embedInlineCSS,
 } from './utils';
-
 class Kode extends Component {
   constructor(props) {
     super(props);
 
     this.el = React.createRef();
-    initialize();
+    embedInlineCSS();
   }
 
   componentDidMount() {
@@ -18,11 +18,12 @@ class Kode extends Component {
       children,
       lang,
       isEnableLineNumber,
+      initialLineNumber,
     } = this.props;
 
-
     const snippet = highlight(children, lang || 'plaintext').value;
-    this.el.current.innerHTML = isEnableLineNumber ? enableLineNumber(snippet) : snippet;
+    const innerHTML = isEnableLineNumber ? enableLineNumber(snippet, initialLineNumber) : snippet;
+    this.el.current.innerHTML = innerHTML;
   }
 
   render() {
@@ -35,7 +36,7 @@ class Kode extends Component {
     };
     return (
       <div {...props}>
-        <pre>
+        <pre className="hljs-pre">
           <code
             className={`hljs ${lang}`}
             ref={this.el}
@@ -45,5 +46,25 @@ class Kode extends Component {
     );
   }
 }
-
+Kode.propTypes = {
+  lang: PropTypes.string,
+  isEnableLineNumber: PropTypes.bool,
+  initialLineNumber: PropTypes.number,
+  diff: PropTypes.shape({
+    addition: PropTypes.shape({
+      start: PropTypes.number,
+      end: PropTypes.number,
+    }),
+    deletion: PropTypes.shape({
+      start: PropTypes.number,
+      end: PropTypes.number,
+    }),
+  }),
+};
+Kode.defaultProps = {
+  lang: 'plaintext',
+  isEnableLineNumber: false,
+  initialLineNumber: 1,
+  diff: null,
+};
 export default Kode;

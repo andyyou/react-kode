@@ -1,6 +1,6 @@
 {
   "name": "react-kode",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "description": "React Component of code-block in HTML with highlight.js ",
   "main": "dist/react-kode.js",
   "unpkg": "dist/react-kode.js",
@@ -8,7 +8,8 @@
     "build": "rollup -c -o dist/react-kode.js",
     "build:watch": "rollup -c -w -o dist/react-kode.js",
     "prepublish": "npm run build",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook:deploy": "storybook-to-ghpages"
   },
   "keywords": [
     "react",
@@ -36,6 +37,7 @@
     "@storybook/addon-knobs": "^4.1.6",
     "@storybook/addons": "^4.1.6",
     "@storybook/react": "^4.1.6",
+    "@storybook/storybook-deployer": "^2.8.1",
     "babel-loader": "^8.0.5",
     "highlight.js": "^9.13.1",
     "prop-types": "^15.6.2",

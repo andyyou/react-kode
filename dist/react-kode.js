@@ -1,2 +1,366 @@
-!function(e,t){"object"==typeof exports&&"undefined"!=typeof module?module.exports=t(require("react"),require("highlight.js")):"function"==typeof define&&define.amd?define(["react","highlight.js"],t):(e=e||self).Kode=t(e.React,e.hljs)}(this,function(a,l){"use strict";var i="default"in a?a.default:a;function s(e,t){for(var n=0;n<t.length;n++){var r=t[n];r.enumerable=r.enumerable||!1,r.configurable=!0,"value"in r&&(r.writable=!0),Object.defineProperty(e,r.key,r)}}function c(e){return(c=Object.setPrototypeOf?Object.getPrototypeOf:function(e){return e.__proto__||Object.getPrototypeOf(e)})(e)}function u(e,t){return(u=Object.setPrototypeOf||function(e,t){return e.__proto__=t,e})(e,t)}function p(e,t){return!t||"object"!=typeof t&&"function"!=typeof t?function(e){if(void 0===e)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return e}(e):t}l=l&&l.hasOwnProperty("default")?l.default:l;var e=Object.getOwnPropertySymbols,t=Object.prototype.hasOwnProperty,n=Object.prototype.propertyIsEnumerable;(function(){try{if(!Object.assign)return!1;var e=new String("abc");if(e[5]="de","5"===Object.getOwnPropertyNames(e)[0])return!1;for(var t={},n=0;n<10;n++)t["_"+String.fromCharCode(n)]=n;if("0123456789"!==Object.getOwnPropertyNames(t).map(function(e){return t[e]}).join(""))return!1;var r={};return"abcdefghijklmnopqrst".split("").forEach(function(e){r[e]=e}),"abcdefghijklmnopqrst"===Object.keys(Object.assign({},r)).join("")}catch(e){return!1}})()&&Object.assign;function r(){}var o,f=(function(e){e.exports=function(){function e(e,t,n,r,o,a){if("SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED"!==a){var i=new Error("Calling PropTypes validators directly is not supported by the `prop-types` package. Use PropTypes.checkPropTypes() to call them. Read more at http://fb.me/use-check-prop-types");throw i.name="Invariant Violation",i}}function t(){return e}var n={array:e.isRequired=e,bool:e,func:e,number:e,object:e,string:e,symbol:e,any:e,arrayOf:t,element:e,instanceOf:t,node:e,objectOf:t,oneOf:t,oneOfType:t,shape:t,exact:t};return n.checkPropTypes=r,n.PropTypes=n}()}(o={exports:{}},o.exports),o.exports),h=(f.PropTypes,function(e){function r(e){var t,n;return function(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}(this,r),(t=p(this,c(r).call(this,e))).el=i.createRef(),(n=document.createElement("style")).type="text/css",n.appendChild(document.createTextNode("\n    .hljs-pre {\n      margin: 0;\n    }\n    .hljs-table {\n      border-collapse: collapse;\n    }\n    .hljs-table td:nth-child(2) {\n      width: 100%;\n    }\n    .hljs-num {\n      user-select: none;\n      -moz-user-select: none;\n    }\n  ")),document.head.appendChild(n),t}var t,n,o;return function(e,t){if("function"!=typeof t&&null!==t)throw new TypeError("Super expression must either be null or a function");e.prototype=Object.create(t&&t.prototype,{constructor:{value:e,writable:!0,configurable:!0}}),t&&u(e,t)}(r,a.Component),t=r,(n=[{key:"componentDidMount",value:function(){var n,e,t=this.props,r=t.children,o=t.lang,a=t.isEnableLineNumber,i=t.initialLineNumber,s=function(e,t){for(var n=e.trim(),r=n.trim().match(/(\r?\n)/),o=r?r[1]:"",a=r?n.split(o):[n],i=l.highlight(t,a.shift()),s=i.value;0<a.length;)s+=o+(i=l.highlight(t,a.shift(),!1,i.top)).value;return i.value=s,i}(r,o||"plaintext").value,c=a?(n=i,e=s.split("\n").map(function(e,t){return'<tr class="hljs-ln">\n      <td><span class="hljs-num">'.concat(n+t," </span></td>\n      <td>").concat(e,"</td>\n    </tr>")}).join(""),'<table class="hljs-table">'.concat(e,"</table>")):s;this.el.current.innerHTML=c}},{key:"render",value:function(){var e=this.props,t=e.lang,n={className:e.className};return i.createElement("div",n,i.createElement("pre",{class:"hljs-pre"},i.createElement("code",{className:"hljs ".concat(t),ref:this.el})))}}])&&s(t.prototype,n),o&&s(t,o),r}());return h.propTypes={lang:f.string,isEnableLineNumber:f.bool,initialLineNumber:f.number,diff:f.shape({addition:f.shape({start:f.number,end:f.number}),deletion:f.shape({start:f.number,end:f.number})})},h.defaultProps={lang:"plaintext",isEnableLineNumber:!1,initialLineNumber:1,diff:null},h});
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('react'), require('highlight.js')) :
+  typeof define === 'function' && define.amd ? define(['react', 'highlight.js'], factory) :
+  (global = global || self, global.Kode = factory(global.React, global.hljs));
+}(this, function (React, hljs) { 'use strict';
+
+  var React__default = 'default' in React ? React['default'] : React;
+  hljs = hljs && hljs.hasOwnProperty('default') ? hljs['default'] : hljs;
+
+  function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+      throw new TypeError("Cannot call a class as a function");
+    }
+  }
+
+  function _defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+  }
+
+  function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) {
+      throw new TypeError("Super expression must either be null or a function");
+    }
+
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+      constructor: {
+        value: subClass,
+        writable: true,
+        configurable: true
+      }
+    });
+    if (superClass) _setPrototypeOf(subClass, superClass);
+  }
+
+  function _getPrototypeOf(o) {
+    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+      return o.__proto__ || Object.getPrototypeOf(o);
+    };
+    return _getPrototypeOf(o);
+  }
+
+  function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+      o.__proto__ = p;
+      return o;
+    };
+
+    return _setPrototypeOf(o, p);
+  }
+
+  function _assertThisInitialized(self) {
+    if (self === void 0) {
+      throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    }
+
+    return self;
+  }
+
+  function _possibleConstructorReturn(self, call) {
+    if (call && (typeof call === "object" || typeof call === "function")) {
+      return call;
+    }
+
+    return _assertThisInitialized(self);
+  }
+
+  function createCommonjsModule(fn, module) {
+  	return module = { exports: {} }, fn(module, module.exports), module.exports;
+  }
+
+  /*
+  object-assign
+  (c) Sindre Sorhus
+  @license MIT
+  */
+  /* eslint-disable no-unused-vars */
+  var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+  var hasOwnProperty = Object.prototype.hasOwnProperty;
+  var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+
+  function toObject(val) {
+  	if (val === null || val === undefined) {
+  		throw new TypeError('Object.assign cannot be called with null or undefined');
+  	}
+
+  	return Object(val);
+  }
+
+  function shouldUseNative() {
+  	try {
+  		if (!Object.assign) {
+  			return false;
+  		}
+
+  		// Detect buggy property enumeration order in older V8 versions.
+
+  		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+  		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+  		test1[5] = 'de';
+  		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+  			return false;
+  		}
+
+  		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+  		var test2 = {};
+  		for (var i = 0; i < 10; i++) {
+  			test2['_' + String.fromCharCode(i)] = i;
+  		}
+  		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+  			return test2[n];
+  		});
+  		if (order2.join('') !== '0123456789') {
+  			return false;
+  		}
+
+  		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+  		var test3 = {};
+  		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+  			test3[letter] = letter;
+  		});
+  		if (Object.keys(Object.assign({}, test3)).join('') !==
+  				'abcdefghijklmnopqrst') {
+  			return false;
+  		}
+
+  		return true;
+  	} catch (err) {
+  		// We don't expect any of the above to throw, but better to be safe.
+  		return false;
+  	}
+  }
+
+  var objectAssign = shouldUseNative() ? Object.assign : function (target, source) {
+  	var from;
+  	var to = toObject(target);
+  	var symbols;
+
+  	for (var s = 1; s < arguments.length; s++) {
+  		from = Object(arguments[s]);
+
+  		for (var key in from) {
+  			if (hasOwnProperty.call(from, key)) {
+  				to[key] = from[key];
+  			}
+  		}
+
+  		if (getOwnPropertySymbols) {
+  			symbols = getOwnPropertySymbols(from);
+  			for (var i = 0; i < symbols.length; i++) {
+  				if (propIsEnumerable.call(from, symbols[i])) {
+  					to[symbols[i]] = from[symbols[i]];
+  				}
+  			}
+  		}
+  	}
+
+  	return to;
+  };
+
+  /**
+   * Copyright (c) 2013-present, Facebook, Inc.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+
+  var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+
+  var ReactPropTypesSecret_1 = ReactPropTypesSecret;
+
+  function emptyFunction() {}
+
+  var factoryWithThrowingShims = function() {
+    function shim(props, propName, componentName, location, propFullName, secret) {
+      if (secret === ReactPropTypesSecret_1) {
+        // It is still safe when called from React.
+        return;
+      }
+      var err = new Error(
+        'Calling PropTypes validators directly is not supported by the `prop-types` package. ' +
+        'Use PropTypes.checkPropTypes() to call them. ' +
+        'Read more at http://fb.me/use-check-prop-types'
+      );
+      err.name = 'Invariant Violation';
+      throw err;
+    }  shim.isRequired = shim;
+    function getShim() {
+      return shim;
+    }  // Important!
+    // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+    var ReactPropTypes = {
+      array: shim,
+      bool: shim,
+      func: shim,
+      number: shim,
+      object: shim,
+      string: shim,
+      symbol: shim,
+
+      any: shim,
+      arrayOf: getShim,
+      element: shim,
+      instanceOf: getShim,
+      node: shim,
+      objectOf: getShim,
+      oneOf: getShim,
+      oneOfType: getShim,
+      shape: getShim,
+      exact: getShim
+    };
+
+    ReactPropTypes.checkPropTypes = emptyFunction;
+    ReactPropTypes.PropTypes = ReactPropTypes;
+
+    return ReactPropTypes;
+  };
+
+  var propTypes = createCommonjsModule(function (module) {
+  /**
+   * Copyright (c) 2013-present, Facebook, Inc.
+   *
+   * This source code is licensed under the MIT license found in the
+   * LICENSE file in the root directory of this source tree.
+   */
+
+  {
+    // By explicitly using `prop-types` you are opting into new production behavior.
+    // http://fb.me/prop-types-in-prod
+    module.exports = factoryWithThrowingShims();
+  }
+  });
+  var propTypes_1 = propTypes.PropTypes;
+
+  /**
+   * Using highlight.js covert code to html
+   * @param {string} str
+   * @param {string} lang
+   */
+
+  var highlight = function highlight(str, lang) {
+    var snippet = str.trim();
+    var matching = snippet.trim().match(/(\r?\n)/);
+    var separator = matching ? matching[1] : '';
+    var lines = matching ? snippet.split(separator) : [snippet];
+    var result = hljs.highlight(lang, lines.shift());
+    var html = result.value;
+
+    while (lines.length > 0) {
+      result = hljs.highlight(lang, lines.shift(), false, result.top);
+      html += separator + result.value;
+    }
+
+    result.value = html;
+    return result;
+  };
+  /**
+   * The string generate by highlight.js
+   * @param {string} htmlString
+   */
+
+  var enableLineNumber = function enableLineNumber(htmlString, initialLineNumber) {
+    var lines = htmlString.split('\n');
+    var innerHTML = lines.map(function (ln, i) {
+      return "<tr class=\"hljs-ln\">\n      <td><span class=\"hljs-num\">".concat(initialLineNumber + i, " </span></td>\n      <td>").concat(ln, "</td>\n    </tr>");
+    }).join('');
+    return "<table class=\"hljs-table\">".concat(innerHTML, "</table>");
+  };
+  /**
+   * Add inline css
+   */
+
+  var embedInlineCSS = function embedInlineCSS() {
+    var style = document.createElement('style');
+    var css = "\n    .hljs-pre {\n      margin: 0;\n    }\n    .hljs-table {\n      border-collapse: collapse;\n    }\n    .hljs-table td:nth-child(2) {\n      width: 100%;\n    }\n    .hljs-num {\n      user-select: none;\n      -moz-user-select: none;\n    }\n  ";
+    style.type = 'text/css';
+    style.appendChild(document.createTextNode(css));
+    document.head.appendChild(style);
+  };
+
+  var Kode =
+  /*#__PURE__*/
+  function (_Component) {
+    _inherits(Kode, _Component);
+
+    function Kode(props) {
+      var _this;
+
+      _classCallCheck(this, Kode);
+
+      _this = _possibleConstructorReturn(this, _getPrototypeOf(Kode).call(this, props));
+      _this.el = React__default.createRef();
+      embedInlineCSS();
+      return _this;
+    }
+
+    _createClass(Kode, [{
+      key: "componentDidMount",
+      value: function componentDidMount() {
+        var _this$props = this.props,
+            children = _this$props.children,
+            lang = _this$props.lang,
+            isEnableLineNumber = _this$props.isEnableLineNumber,
+            initialLineNumber = _this$props.initialLineNumber;
+        var snippet = highlight(children, lang || 'plaintext').value;
+        var innerHTML = isEnableLineNumber ? enableLineNumber(snippet, initialLineNumber) : snippet;
+        this.el.current.innerHTML = innerHTML;
+      }
+    }, {
+      key: "render",
+      value: function render() {
+        var _this$props2 = this.props,
+            lang = _this$props2.lang,
+            className = _this$props2.className;
+        var props = {
+          className: className
+        };
+        return React__default.createElement("div", props, React__default.createElement("pre", {
+          className: "hljs-pre"
+        }, React__default.createElement("code", {
+          className: "hljs ".concat(lang),
+          ref: this.el
+        })));
+      }
+    }]);
+
+    return Kode;
+  }(React.Component);
+
+  Kode.propTypes = {
+    lang: propTypes.string,
+    isEnableLineNumber: propTypes.bool,
+    initialLineNumber: propTypes.number,
+    diff: propTypes.shape({
+      addition: propTypes.shape({
+        start: propTypes.number,
+        end: propTypes.number
+      }),
+      deletion: propTypes.shape({
+        start: propTypes.number,
+        end: propTypes.number
+      })
+    })
+  };
+  Kode.defaultProps = {
+    lang: 'plaintext',
+    isEnableLineNumber: false,
+    initialLineNumber: 1,
+    diff: null
+  };
+
+  return Kode;
+
+}));
 //# sourceMappingURL=react-kode.js.map
