@@ -1,10 +1,12 @@
 {
   "name": "react-kode",
-  "version": "0.0.3",
-  "description": "React Component of code block in HTML with highlight.js ",
+  "version": "0.0.4",
+  "description": "React Component of code-block in HTML with highlight.js ",
   "main": "dist/react-kode.js",
+  "unpkg": "dist/react-kode.js",
   "scripts": {
     "build": "rollup -c -o dist/react-kode.js",
+    "build:watch": "rollup -c -w -o dist/react-kode.js",
     "prepublish": "npm run build",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
@@ -36,10 +38,15 @@
     "@storybook/react": "^4.1.6",
     "babel-loader": "^8.0.5",
     "highlight.js": "^9.13.1",
+    "prop-types": "^15.6.2",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "rollup": "^1.1.0",
     "rollup-plugin-babel": "^4.3.0",
-    "rollup-plugin-uglify": "^6.0.1"
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-node-resolve": "^4.0.0",
+    "rollup-plugin-replace": "^2.1.0",
+    "rollup-plugin-uglify": "^6.0.1",
+    "styled-components": "^4.1.3"
   }
 }
