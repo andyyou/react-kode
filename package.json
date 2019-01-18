@@ -1,6 +1,6 @@
 {
   "name": "react-kode",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "React Component of code-block in HTML with highlight.js ",
   "main": "dist/react-kode.js",
   "unpkg": "dist/react-kode.js",
