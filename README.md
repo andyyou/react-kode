@@ -1,15 +1,7 @@
 # react-kode
 
 A react component that integrates [highlight.js](https://highlightjs.org) with advance.
-
-<p class="codepen" data-height="300" data-theme-id="8540" data-default-tab="result" data-user="andyyou" data-slug-hash="zyVvMV" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid black; margin: 1em 0; padding: 1em;" data-pen-title="react-kode">
-  <span>See the Pen <a href="https://codepen.io/andyyou/pen/zyVvMV/">
-  react-kode</a> by andyyou (<a href="https://codepen.io/andyyou">@andyyou</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-
-#### Features
+See examples on [Codepen](https://codepen.io/andyyou/pen/zyVvMV) or [Storybook](https://andyyou.github.io/react-kode).
 
 * Support theme by highlight.js
 * Support line number.
@@ -61,6 +53,20 @@ const App = () => (
 ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
+## Installation
+
+#### NPM
+
+Install `react-kode`.
+
+```bash
+# Install dependencies.
+$ npm i react highlight.js
+
+# Install react-kode.
+$ npm i  react-kode
+```
+
 #### CDN
 
 ```html
@@ -83,19 +89,14 @@ ReactDOM.render(<App />, document.getElementById('root'));
 <script crossorigin src="https://unpkg.com/react-kode@latest/dist/react-kode.js"></script>
 ```
 
-#### NPM
+## Properties
 
-Install `react-kode`.
-
-```bash
-# Install dependencies.
-$ npm i react highlight.js
-
-# Install react-kode.
-$ npm i  react-kode
-```
-
-## Contributors
+| Property           | Type   | Description                                                  |
+| ------------------ | ------ | ------------------------------------------------------------ |
+| lang               | string | Specify language of code.  e.g. html, javascript. To get language list reference [highlight.js docs](https://highlightjs.readthedocs.io/en/latest/index.html) or [github](https://github.com/highlightjs/highlight.js/tree/master/src/languages) |
+| isEnableLineNumber | bool   | Set `true` to enable line number.                            |
+| initialLineNumber  | number | Set initial number of line.                                  |
+| diff               | object | Coming soon...                                               |
 
 ## Development
 
@@ -106,3 +107,5 @@ $ npm run build
 # Dev
 $ npm run storybook
 ```
+
+## Contributors
